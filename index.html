@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The First Church of Gravy — a non-prophet organization. Blessed are the drippings, for they shall be poured.">
+<title>The First Church of Gravy</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥣</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+  :root {
+    --ground: #191009;
+    --panel: #241811;
+    --panel-2: #2d1e12;
+    --parchment: #f0e2c8;
+    --muted: #c0a983;
+    --faint: #94805f;
+    --gold: #d9a441;
+    --gold-deep: #a87722;
+    --ember: #a34632;
+    --line: #453321;
+    --leading: #171009;
+    --display: "Grenze Gotisch", "Palatino Linotype", "Book Antiqua", serif;
+    --body: "Cardo", "Palatino Linotype", Georgia, serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--parchment);
+    font-family: var(--body);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  ::selection { background: var(--gold-deep); color: var(--ground); }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--parchment); }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .nave { max-width: 720px; margin-inline: auto; padding-inline: 24px; }
+  .wide { max-width: 940px; margin-inline: auto; padding-inline: 24px; }
+
+  section { padding-block: 72px 0; }
+
+  /* ── Section furniture ─────────────────────────────── */
+  .rule {
+    display: flex; align-items: center; gap: 18px;
+    color: var(--gold-deep);
+    margin-bottom: 40px;
+  }
+  .rule::before, .rule::after {
+    content: ""; flex: 1; border-top: 1px solid var(--line);
+  }
+  .rule svg { flex: none; }
+
+  .label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    font-size: 0.8125rem;
+    color: var(--gold);
+    margin: 0 0 10px;
+  }
+  h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 4.5vw, 2.75rem);
+    line-height: 1.15;
+    text-align: center;
+    text-wrap: balance;
+    margin: 0 0 28px;
+  }
+  .lede { text-align: center; color: var(--muted); max-width: 56ch; margin: -12px auto 32px; }
+
+  /* ── Hero ──────────────────────────────────────────── */
+  header {
+    padding: 64px 24px 0;
+    text-align: center;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin: 0 0 34px;
+  }
+  .window-wrap {
+    position: relative;
+    width: min(320px, 72vw);
+    margin: 0 auto 40px;
+  }
+  .window-wrap::before {
+    content: "";
+    position: absolute; inset: -12% -22%;
+    background: radial-gradient(closest-side, rgba(217, 164, 65, 0.28), rgba(217, 164, 65, 0) 72%);
+    animation: flicker 4.5s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes flicker {
+    from { opacity: 0.65; }
+    38%  { opacity: 0.9; }
+    62%  { opacity: 0.78; }
+    to   { opacity: 1; }
+  }
+  .window-wrap svg { position: relative; display: block; width: 100%; height: auto; }
+  .steam {
+    animation: waft 5s ease-in-out infinite alternate;
+    transform-origin: center bottom;
+  }
+  .steam-b { animation-delay: 1.6s; }
+  @keyframes waft {
+    from { transform: translateY(0);    opacity: 0.55; }
+    to   { transform: translateY(-7px); opacity: 1; }
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.9rem, 9vw, 5.2rem);
+    line-height: 1.02;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .tagline {
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.6vw, 1.45rem);
+    color: var(--gold);
+    margin: 0 auto 14px;
+    max-width: 40ch;
+    text-wrap: balance;
+  }
+  .welcome {
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 0 auto 36px;
+  }
+
+  .cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn {
+    font-family: var(--body);
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 13px 26px 12px;
+    border: 1px solid var(--gold-deep);
+    background: none;
+    color: var(--gold);
+    cursor: pointer;
+  }
+  .btn-solid { background: var(--gold); border-color: var(--gold); color: var(--ground); font-weight: 700; }
+  .btn-solid:hover { background: var(--parchment); border-color: var(--parchment); color: var(--ground); }
+  .btn:not(.btn-solid):hover { border-color: var(--gold); color: var(--parchment); }
+
+  nav {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    column-gap: 30px; row-gap: 6px;
+    padding: 18px 24px;
+    border-block: 1px solid var(--line);
+    max-width: 940px;
+    margin-inline: auto;
+  }
+  nav a {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  nav a:hover { color: var(--gold); }
+
+  /* ── Creed ─────────────────────────────────────────── */
+  .creed { text-align: center; font-size: 1.1875rem; }
+  .creed p { margin: 0 0 1.1em; }
+  .creed .amen {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-top: 1.4em;
+  }
+
+  /* ── Scripture ─────────────────────────────────────── */
+  .scripture {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    outline: 1px solid rgba(217, 164, 65, 0.22);
+    outline-offset: -7px;
+    padding: 44px clamp(26px, 6vw, 60px);
+  }
+  .scripture h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.45rem;
+    text-align: center;
+    margin: 0 0 6px;
+  }
+  .scripture .cite {
+    text-align: center; color: var(--faint);
+    font-style: italic; margin: 0 0 26px;
+  }
+  .verse { margin: 0 0 0.7em; padding-left: 2.4ch; text-indent: -2.4ch; }
+  .verse .num {
+    color: var(--gold-deep);
+    font-size: 0.8em;
+    font-weight: 700;
+    padding-right: 0.9ch;
+  }
+
+  /* ── Ladlements ────────────────────────────────────── */
+  .ladlements { list-style: none; margin: 0; padding: 0; }
+  .ladlements li {
+    display: grid;
+    grid-template-columns: 4.2rem 1fr;
+    gap: 20px;
+    align-items: baseline;
+    padding-block: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .ladlements li:last-child { border-bottom: 1px solid var(--line); }
+  .ladlements .numeral {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 2.4rem;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1;
+  }
+  .ladlements strong { font-weight: 700; }
+  .ladlements .gloss { color: var(--muted); display: block; font-size: 1.0625rem; }
+
+  /* ── Sacraments ────────────────────────────────────── */
+  .sacraments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .sacraments { grid-template-columns: 1fr; } }
+  .sacrament {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    outline: 1px solid rgba(217, 164, 65, 0.18);
+    outline-offset: -6px;
+    padding: 30px 28px 26px;
+  }
+  .sacrament h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0 0 4px;
+  }
+  .sacrament .kind {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.75rem;
+    color: var(--gold-deep);
+    margin: 0 0 14px;
+  }
+  .sacrament p { margin: 0; color: var(--muted); font-size: 1.0625rem; }
+
+  /* ── Schism ────────────────────────────────────────── */
+  .schism {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 36px;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 640px) {
+    .schism { grid-template-columns: 1fr; }
+    .schism .pillar { display: none; }
+    .schism article + article { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 26px; }
+  }
+  .schism .pillar { background: var(--line); }
+  .schism h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin: 0 0 2px;
+  }
+  .schism .order {
+    text-transform: uppercase; letter-spacing: 0.24em;
+    font-size: 0.75rem; margin: 0 0 14px;
+  }
+  .smoothist .order { color: var(--gold-deep); }
+  .lumpist .order { color: var(--ember); }
+  .schism p { margin: 0; color: var(--muted); font-size: 1.0625rem; }
+  .council {
+    text-align: center;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 0 auto;
+  }
+
+  /* ── Heresies / FAQ ────────────────────────────────── */
+  .faq { margin: 0; }
+  .faq dt {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.35rem;
+    padding-top: 24px;
+  }
+  .faq dt::before { content: "Q. "; color: var(--gold-deep); }
+  .faq dd { margin: 6px 0 24px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+  .faq dd:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+  /* ── Holy days ─────────────────────────────────────── */
+  .holy-days { margin: 0; }
+  .holy-days > div {
+    display: grid;
+    grid-template-columns: minmax(11rem, 16rem) 1fr;
+    gap: 20px;
+    padding-block: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .holy-days > div:last-child { border-bottom: 1px solid var(--line); }
+  @media (max-width: 560px) { .holy-days > div { grid-template-columns: 1fr; gap: 2px; } }
+  .holy-days dt { font-weight: 700; color: var(--gold); }
+  .holy-days dd { margin: 0; color: var(--muted); }
+  .holy-days dd strong { color: var(--parchment); font-family: var(--display); font-weight: 500; font-size: 1.2rem; }
+
+  /* ── Ordination ────────────────────────────────────── */
+  .ordination {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    outline: 1px solid rgba(217, 164, 65, 0.22);
+    outline-offset: -7px;
+    padding: 46px clamp(26px, 6vw, 60px) 50px;
+    text-align: center;
+  }
+  .ordination p { color: var(--muted); max-width: 50ch; margin: 0 auto 28px; }
+  .ordain-form {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .ordain-form input {
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    padding: 12px 16px;
+    width: min(280px, 100%);
+    background: var(--ground);
+    border: 1px solid var(--line);
+    color: var(--parchment);
+  }
+  .ordain-form input::placeholder { color: var(--faint); }
+  .decree {
+    display: none;
+    margin: 30px auto 0;
+    max-width: 46ch;
+    padding: 26px 28px;
+    border: 1px solid var(--gold-deep);
+    outline: 1px solid var(--line);
+    outline-offset: 5px;
+  }
+  .decree.shown { display: block; }
+  .decree .by { font-style: italic; color: var(--muted); margin: 0 0 8px; font-size: 1rem; }
+  .decree .title-line {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    color: var(--gold);
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  .decree .fine { font-size: 0.9375rem; color: var(--faint); margin: 0; font-style: italic; }
+
+  /* ── Footer ────────────────────────────────────────── */
+  footer {
+    margin-top: 84px;
+    padding: 40px 24px 52px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--faint);
+    font-size: 0.9375rem;
+  }
+  footer p { margin: 0 0 8px; max-width: 60ch; margin-inline: auto; }
+  footer .sign { font-family: var(--display); font-size: 1.15rem; color: var(--muted); margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">A Non-Prophet Organization &middot; Est. Last Sunday</p>
+
+  <div class="window-wrap" aria-hidden="false">
+    <svg viewBox="0 0 360 545" role="img" aria-label="A stained-glass window depicting a steaming gravy boat within a golden halo">
+      <defs>
+        <radialGradient id="glassGlow" cx="50%" cy="36%" r="70%">
+          <stop offset="0%" stop-color="#e8b54e"/>
+          <stop offset="55%" stop-color="#b37b2a"/>
+          <stop offset="100%" stop-color="#6e441a"/>
+        </radialGradient>
+      </defs>
+      <!-- sill -->
+      <rect x="0" y="514" width="360" height="20" fill="#3a2413"/>
+      <!-- glass field -->
+      <path d="M20,520 L20,240 Q20,86 180,36 Q340,86 340,240 L340,520 Z"
+            fill="url(#glassGlow)" stroke="#171009" stroke-width="12"/>
+      <!-- lower panes -->
+      <g stroke="#171009" stroke-width="7">
+        <rect x="24"  y="334" width="99"  height="87" fill="#8e3b2e" opacity="0.9"/>
+        <rect x="131" y="334" width="98"  height="87" fill="#c08a2e" opacity="0.9"/>
+        <rect x="237" y="334" width="99"  height="87" fill="#6b6222" opacity="0.9"/>
+        <rect x="24"  y="429" width="99"  height="87" fill="#6b6222" opacity="0.9"/>
+        <rect x="131" y="429" width="98"  height="87" fill="#8e3b2e" opacity="0.9"/>
+        <rect x="237" y="429" width="99"  height="87" fill="#c08a2e" opacity="0.9"/>
+      </g>
+      <line x1="20" y1="330" x2="340" y2="330" stroke="#171009" stroke-width="9"/>
+      <!-- halo rays -->
+      <g stroke="#171009" stroke-width="6">
+        <line x1="180" y1="106" x2="180" y2="52"/>
+        <line x1="247" y1="132" x2="286" y2="92"/>
+        <line x1="113" y1="132" x2="74"  y2="92"/>
+        <line x1="272" y1="200" x2="334" y2="200"/>
+        <line x1="88"  y1="200" x2="26"  y2="200"/>
+        <line x1="252" y1="266" x2="296" y2="308"/>
+        <line x1="108" y1="266" x2="64"  y2="308"/>
+      </g>
+      <!-- halo rings & medallion -->
+      <circle cx="180" cy="200" r="112" fill="none" stroke="#171009" stroke-width="8"/>
+      <circle cx="180" cy="200" r="88" fill="#e9be5c" stroke="#171009" stroke-width="8"/>
+      <!-- the boat -->
+      <g>
+        <path d="M120,205 C122,193 140,186 163,184 L214,184 C219,175 228,169 236,170 C235,177 229,184 223,189 C220,205 206,220 180,222 C152,222 124,216 120,205 Z"
+              fill="#3a2413"/>
+        <path d="M126,196 C110,192 106,206 122,211" fill="none" stroke="#3a2413" stroke-width="7"/>
+        <path d="M158,222 L202,222 L211,237 L149,237 Z" fill="#3a2413"/>
+        <path class="steam" d="M164,168 C157,156 170,148 163,134" fill="none" stroke="#8c5a1e" stroke-width="6" stroke-linecap="round"/>
+        <path class="steam steam-b" d="M193,166 C186,154 199,146 192,132" fill="none" stroke="#8c5a1e" stroke-width="6" stroke-linecap="round"/>
+      </g>
+      <!-- gilt edging -->
+      <path d="M20,520 L20,240 Q20,86 180,36 Q340,86 340,240 L340,520 Z"
+            fill="none" stroke="#a87722" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <h1>The First Church of&nbsp;Gravy</h1>
+  <p class="tagline">&ldquo;Blessed are the drippings, for they shall be poured.&rdquo;</p>
+  <p class="welcome">We are a fellowship of the sauced, gathered in the conviction that nothing dry shall be served, and no roast shall want for covering. All boats welcome.</p>
+
+  <div class="cta-row">
+    <a class="btn btn-solid" href="#creed">Read the Creed</a>
+    <a class="btn" href="#ordination">Be Ordained</a>
+  </div>
+
+  <nav aria-label="Sections">
+    <a href="#creed">Creed</a>
+    <a href="#scripture">Scripture</a>
+    <a href="#ladlements">Ladlements</a>
+    <a href="#sacraments">Sacraments</a>
+    <a href="#schism">The Schism</a>
+    <a href="#holy-days">Holy Days</a>
+    <a href="#ordination">Ordination</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="creed" class="nave">
+    <p class="label">The Creed</p>
+    <h2>What We Believe</h2>
+    <div class="creed">
+      <p>We believe in one Sauce, warm and abundant, poured over all things visible and edible.</p>
+      <p>We believe in the Roux &mdash; equal parts fat and flour, patiently browned &mdash; by whom all thickening is made.</p>
+      <p>We believe in the Whisk, breaker of lumps, and in the Simmer everlasting.</p>
+      <p>We believe the boat shall be passed to the left; that seconds are a right and thirds a calling; and that no potato shall be left unmashed, nor mash unsauced.</p>
+      <p class="amen">This we hold, until the pan is deglazed. Rou&#8209;men.</p>
+    </div>
+  </section>
+
+  <section id="scripture" class="nave">
+    <p class="label">Scripture</p>
+    <h2>From the Holy Texts</h2>
+    <div class="scripture">
+      <h3>The Book of Roux</h3>
+      <p class="cite">Chapter 1, verses 1&ndash;7 &middot; The Stovetop Translation</p>
+      <p class="verse"><span class="num">1</span>In the beginning there was the pan, and the pan was hot, and the drippings moved upon the face of the pan.</p>
+      <p class="verse"><span class="num">2</span>And a voice said, let there be flour; and there was flour, and it was sifted.</p>
+      <p class="verse"><span class="num">3</span>And the fat and the flour were joined, and the joining was called Roux; and it was golden, and it was good.</p>
+      <p class="verse"><span class="num">4</span>Then came the stock, a little at a time; for whosoever dumpeth it all at once shall know lumps all the days of their life.</p>
+      <p class="verse"><span class="num">5</span>And the whisk moved without ceasing, and the sauce thickened, and it coated the back of the spoon.</p>
+      <p class="verse"><span class="num">6</span>And it was seasoned, and tasted, and seasoned again.</p>
+      <p class="verse"><span class="num">7</span>And there was simmer, and there was reduction &mdash; the first supper.</p>
+    </div>
+  </section>
+
+  <section id="ladlements" class="nave">
+    <p class="label">The Law</p>
+    <h2>The Five Ladlements</h2>
+    <ol class="ladlements">
+      <li>
+        <span class="numeral" aria-hidden="true">I</span>
+        <div><strong>Thou shalt not serve it dry.</strong>
+        <span class="gloss">This is the whole of the law. The rest is commentary and cornstarch.</span></div>
+      </li>
+      <li>
+        <span class="numeral" aria-hidden="true">II</span>
+        <div><strong>Honor thy drippings.</strong>
+        <span class="gloss">Strain them if thou must, but discard them never, for they are the soul of the pan.</span></div>
+      </li>
+      <li>
+        <span class="numeral" aria-hidden="true">III</span>
+        <div><strong>Whisk without ceasing,</strong>
+        <span class="gloss">that lumps may not come to pass among you.</span></div>
+      </li>
+      <li>
+        <span class="numeral" aria-hidden="true">IV</span>
+        <div><strong>Remember the Sunday Roast, and keep it moist.</strong>
+        <span class="gloss">Low and slow, from midmorning; the household shall gather at the smell of it.</span></div>
+      </li>
+      <li>
+        <span class="numeral" aria-hidden="true">V</span>
+        <div><strong>Covet not thy neighbor&rsquo;s boat.</strong>
+        <span class="gloss">Pass it to the left, for gravy shared is gravy multiplied.</span></div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="sacraments" class="wide">
+    <p class="label">Rites of the Church</p>
+    <h2>The Four Sacraments</h2>
+    <div class="sacraments">
+      <div class="sacrament">
+        <p class="kind">Initiation</p>
+        <h3>The First Pour</h3>
+        <p>By ladle are new congregants welcomed: one generous pour over the mash of initiation, witnessed by at least two elders and a dinner roll.</p>
+      </div>
+      <div class="sacrament">
+        <p class="kind">Communion</p>
+        <h3>The Biscuit</h3>
+        <p>Taken warm, split, and thoroughly sauced. The biscuit is merely the vessel. Observed on Sundays, and honestly most other days.</p>
+      </div>
+      <div class="sacrament">
+        <p class="kind">Confirmation</p>
+        <h3>The Rite of Thickening</h3>
+        <p>At the age of reason, each member prepares their first unsupervised roux, from blond unto brown, without burning. Many are stirred, but few are curdled.</p>
+      </div>
+      <div class="sacrament">
+        <p class="kind">Last Rites</p>
+        <h3>The Final Deglaze</h3>
+        <p>When the meal ends, the pan is honored with wine or stock, and nothing of the fond is lost. So may we all be scraped lovingly from the pan of this world.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="schism" class="wide">
+    <p class="label">Church History</p>
+    <h2>The Great Schism</h2>
+    <div class="schism">
+      <article class="smoothist">
+        <h3>The Smoothist Communion</h3>
+        <p class="order">Orthodoxy of the Strainer</p>
+        <p>Holds that gravy, like mercy, must be strained: velvet, unbroken, without blemish or lump. Their vestments are sieves. Their patience is legendary.</p>
+      </article>
+      <div class="pillar" aria-hidden="true"></div>
+      <article class="lumpist">
+        <h3>The Lumpist Orthodoxy</h3>
+        <p class="order">Old Believers of the Spoon</p>
+        <p>Holds that the lump is proof of the honest hand, and that a homemade gravy without texture is a store-bought soul. They stir counterclockwise, out of principle.</p>
+      </article>
+    </div>
+    <p class="council">The two communions were reconciled &mdash; mostly &mdash; at the Council of Whisk, which ruled that both are canon, and that anyone using granules from a jar should simply not bring it up at the table.</p>
+  </section>
+
+  <section id="heresies" class="nave">
+    <p class="label">Doctrine, Clarified</p>
+    <h2>Heresies &amp; Frequent Questions</h2>
+    <dl class="faq">
+      <dt>Is plant-based gravy permitted?</dt>
+      <dd>Fully canon. The Sauce takes many forms &mdash; mushroom, onion, miso. All boats rise.</dd>
+      <dt>What of instant granules?</dt>
+      <dd>We do not speak of the Granular Heresy. (If pressed: forgiven, when stirred with love and never confessed at the table.)</dd>
+      <dt>White gravy or brown?</dt>
+      <dd>Yes. Sausage gravy is recognized as a full member of the communion of sauces, with all rights and privileges pertaining thereto.</dd>
+      <dt>Is ketchup a gravy?</dt>
+      <dd>This question cost us three congregations. The Council has tabled it indefinitely.</dd>
+      <dt>What happens when the boat runs out?</dt>
+      <dd>Nothing &ldquo;happens.&rdquo; But it is customary to sop the boat with bread, that no drop be lost, and to whisper, <em>until the next pour.</em></dd>
+    </dl>
+  </section>
+
+  <section id="holy-days" class="nave">
+    <p class="label">The Liturgical Year</p>
+    <h2>Holy Days &amp; Observances</h2>
+    <dl class="holy-days">
+      <div>
+        <dt>Every Sunday</dt>
+        <dd><strong>Sabbath of the Roast.</strong> Low and slow, from midmorning. Attendance is taken by aroma.</dd>
+      </div>
+      <div>
+        <dt>Fourth Thursday of November</dt>
+        <dd><strong>The High Pour.</strong> Highest of holy days. Boats are refilled without being asked, and the ladle never touches the table.</dd>
+      </div>
+      <div>
+        <dt>The Day After</dt>
+        <dd><strong>Feast of the Leftovers.</strong> The gravy, reheated, is holier still. This is settled doctrine.</dd>
+      </div>
+      <div>
+        <dt>Any Rainy Tuesday</dt>
+        <dd><strong>Biscuit Vespers.</strong> A quiet service. Bring your own vessel.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="ordination" class="nave">
+    <p class="label">Holy Orders</p>
+    <h2>Take Your Vows</h2>
+    <div class="ordination">
+      <p>The Church ordains all who ask. Enter your name &mdash; or don&rsquo;t; the Sauce knows you already &mdash; and receive your title in the Order of the Eternal Simmer.</p>
+      <form class="ordain-form" id="ordainForm">
+        <label for="ordainName" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Your name</label>
+        <input type="text" id="ordainName" name="name" placeholder="Your name (optional)" autocomplete="off" maxlength="60">
+        <button type="submit" class="btn btn-solid">Ordain Me</button>
+      </form>
+      <div class="decree" id="decree" aria-live="polite">
+        <p class="by">By the steam and by the stock, be it known that</p>
+        <p class="title-line" id="decreeTitle"></p>
+        <p class="fine">Vows are binding until dishes are done. Reordination is permitted, encouraged, and frankly expected.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>The First Church of Gravy is a non-prophet organization. Services are held wherever two or more are gathered around mashed potatoes.</p>
+  <p>No deities were reduced in the making of this site. Several sauces were.</p>
+  <p class="sign">&ldquo;Until the next pour.&rdquo;</p>
+</footer>
+
+<script>
+  (function () {
+    var ranks = ["Deacon", "Vicar", "Curate", "Cantor", "Keeper", "Warden", "Archwhisk", "Ladle-Bearer", "Prelate", "Sexton"];
+    var domains = [
+      "of the First Drippings", "of the Sacred Simmer", "of the Eternal Roux",
+      "of the Bottomless Boat", "of the Third Thickening", "of the Blessed Biscuit",
+      "of the Midnight Deglaze", "of the Unbroken Emulsion", "of the Back of the Spoon",
+      "of the Sunday Fond"
+    ];
+    function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+    var form = document.getElementById("ordainForm");
+    var decree = document.getElementById("decree");
+    var titleLine = document.getElementById("decreeTitle");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = document.getElementById("ordainName").value.trim();
+      var title = pick(ranks) + " " + pick(domains);
+      titleLine.textContent = (name ? name + ", " : "") + title;
+      decree.classList.add("shown");
+    });
+  })();
+</script>
+
+</body>
+</html>
